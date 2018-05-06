@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".simulacao"
+    tools:showIn="@layout/app_bar_simulacao">
+
+    <Spinner
+        android:id="@+id/spinnerRecurso"
+        android:layout_width="168dp"
+        android:layout_height="33dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="26dp"
+        android:layout_marginTop="31dp"
+        tools:layout_editor_absoluteX="157dp"
+        tools:layout_editor_absoluteY="78dp" />
+
+    <TextView
+        android:id="@+id/lblAparelho"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/spinnerRecurso"
+        android:layout_marginStart="89dp"
+        android:text="Aparelho: "
+        tools:layout_editor_absoluteX="68dp"
+        tools:layout_editor_absoluteY="85dp" />
+
+    <TextView
+        android:id="@+id/lblDiasUso"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/lblAparelho"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="98dp"
+        android:text="Dias de Uso" />
+
+    <EditText
+        android:id="@+id/txtDiasUso"
+        android:layout_width="173dp"
+        android:layout_height="29dp"
+        android:layout_alignStart="@+id/spinnerRecurso"
+        android:layout_alignTop="@+id/lblDiasUso"
+        android:ems="10"
+        android:inputType="numberSigned" />
+
+    <TextView
+        android:id="@+id/lblTempoMedio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/lblAparelho"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="162dp"
+        android:text="Tempo médio de uso" />
+
+    <EditText
+        android:id="@+id/txtTempoMedio"
+        android:layout_width="177dp"
+        android:layout_height="29dp"
+        android:layout_alignEnd="@+id/spinnerRecurso"
+        android:layout_alignTop="@+id/lblTempoMedio"
+        android:ems="10"
+        android:inputType="time" />
+
+    <Button
+        android:id="@+id/btnCalcular"
+        android:layout_width="175dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/formCadastro"
+        android:text="Calcular" />
+
+    <Button
+        android:id="@+id/formCadastro"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="218dp"
+        android:layout_toStartOf="@+id/spinnerRecurso"
+        android:text="Adicionar" />
+
+    <Button
+        android:id="@+id/btnListar"
+        android:layout_width="176dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/formCadastro"
+        android:layout_marginBottom="180dp"
+        android:text="Listar"
+        android:onClick="listarTodos"/>
+
+</RelativeLayout>

@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Gerenciador de Energia Elétrica</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Gerenciador de Energia</string>
+    <string name="nav_header_subtitle">iuryoliveirasx@gmail.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="menuRecursos">Recursos</string>
+    <string name="menuConsumo">Consumo</string>
+    <string name="menuHistorico">Simulação</string>
+
+    <string name="action_settings">Limpar</string>
+    <string name="action_settings2">Testar</string>
+
+    <string name="title_activity_splash_screen">SplashScreen</string>
+
+    <string-array name="nome_recursos">
+        <item>Televisor</item>
+        <item>Microondas</item>
+        <item>Computador</item>
+        <item>Console de Jogos</item>
+        <item>Chuveiro Elétrico</item>
+        <item>Lâmpada</item>
+    </string-array>
+
+    <string name="title_activity_recurso">Recurso</string>
+    <string name="title_activity_consumo">Consumo</string>
+    <string name="title_activity_consumo_com_tab">ConsumoComTab</string>
+
+    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_simulacao">simulacao</string>
+    <string name="title_activity_perfil_consumo">PerfilConsumo</string>
+</resources>
