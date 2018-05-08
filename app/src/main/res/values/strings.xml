@@ -31,4 +31,5 @@
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_simulacao">simulacao</string>
     <string name="title_activity_perfil_consumo">PerfilConsumo</string>
+    <string name="title_activity_login">Login</string>
 </resources>

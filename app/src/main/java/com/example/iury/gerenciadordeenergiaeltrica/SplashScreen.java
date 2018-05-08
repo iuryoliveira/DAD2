@@ -30,7 +30,7 @@ public class SplashScreen extends AppCompatActivity implements Runnable {
 //        Intent intent = new Intent(this, MainActivity.class);
 //        startActivity(intent);
 //        finish();
-        startActivity(new Intent(this, PerfilConsumo.class));
+        startActivity(new Intent(this, Login.class));
         finish();
     }
 }
