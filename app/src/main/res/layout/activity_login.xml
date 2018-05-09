@@ -26,7 +26,7 @@
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="match_parent"
-        android:layout_height="171dp"
+        android:layout_height="143dp"
         app:srcCompat="@drawable/energia" />
 
 </android.support.design.widget.CoordinatorLayout>
