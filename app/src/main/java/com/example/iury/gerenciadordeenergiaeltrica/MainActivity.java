@@ -248,6 +248,9 @@ public class MainActivity extends AppCompatActivity
         EditText voltagem = (EditText) findViewById(R.id.txtVoltagem);
         EditText potenciaUso = (EditText) findViewById(R.id.txtPotenciaUso);
         EditText potenciaStand = (EditText) findViewById(R.id.txtPotenciaStand);
+        EditText descricao = (EditText) findViewById(R.id.txtDescricao);
+        ImageView imagemRecurso = (ImageView) findViewById(R.id.imgAparelho);
+
 
         if (isEmpty(voltagem)) {
             Toast.makeText(getApplicationContext(), "Informe a voltagem do aparelho", Toast.LENGTH_SHORT).show();

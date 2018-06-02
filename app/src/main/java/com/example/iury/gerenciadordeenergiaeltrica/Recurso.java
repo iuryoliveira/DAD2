@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Recurso implements Serializable{
 
     private String descricao;
+    private Integer tipo;
     private Double voltagem;
     private Double potenciaUso;
     private Double potenciaStand;
@@ -20,6 +21,8 @@ public class Recurso implements Serializable{
     public String getDescricao() {
         return descricao;
     }
+
+    public Integer getTipo() { return tipo; }
 
     public Double getVoltagem() {
         return voltagem;
@@ -56,6 +59,8 @@ public class Recurso implements Serializable{
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public void setTipo(Integer tipo) { this.tipo = tipo; }
 
     public String getFoto() {
         return foto;

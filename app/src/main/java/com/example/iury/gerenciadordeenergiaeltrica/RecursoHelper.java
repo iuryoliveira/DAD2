@@ -15,6 +15,7 @@ public class RecursoHelper {
     private EditText voltagem;
     private EditText potenciaUso;
     private EditText potenciaStand;
+    private EditText descricao;
 
     private ImageView imagemRecurso;
     private Button botaoFoto;
@@ -26,7 +27,7 @@ public class RecursoHelper {
         this.voltagem = (EditText) activity.findViewById(R.id.txtVoltagem);
         this.potenciaUso = (EditText) activity.findViewById(R.id.txtPotenciaUso);
         this.potenciaStand = (EditText) activity.findViewById(R.id.txtPotenciaStand);
-
+        this.descricao = (EditText) activity.findViewById(R.id.txtDescricao);
         this.imagemRecurso = (ImageView) activity.findViewById(R.id.imgAparelho);
         this.botaoFoto = (Button) activity.findViewById(R.id.cadastrarForm);
     }
@@ -37,17 +38,17 @@ public class RecursoHelper {
 
     public Recurso pegaRecursoDoFormulario(){
 
-        recurso.setDescricao("Padrão");
+        recurso.setDescricao(descricao.getText().toString());
+        recurso.setTipo(1); //Teste
         recurso.setVoltagem(Double.parseDouble(voltagem.getText().toString()));
         recurso.setPotenciaUso(Double.parseDouble(potenciaUso.getText().toString()));
         recurso.setPotenciaStand(Double.parseDouble(potenciaStand.getText().toString()));
-
         recurso.setFoto((String) imagemRecurso.getTag());
         return recurso;
     }
 //    Colocar dados da classe no formulário
     public void colocaNoFormulario(Recurso recurso){
-        //recurso.setDescricao(recurso.getDescricao());
+        descricao.setText(recurso.getDescricao().toString());
         voltagem.setText(recurso.getVoltagem().toString());
         potenciaUso.setText(recurso.getPotenciaUso().toString());
         potenciaStand.setText(recurso.getPotenciaStand().toString());

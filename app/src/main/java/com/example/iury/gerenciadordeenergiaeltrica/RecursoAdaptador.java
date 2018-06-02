@@ -46,6 +46,7 @@ public class RecursoAdaptador extends BaseAdapter {
             linha = this.activity.getLayoutInflater().inflate(R.layout.celula_recurso, parent, false);
         }
 
+        TextView tipo = (TextView) linha.findViewById(R.id.tipo);
         TextView descricao = (TextView) linha.findViewById(R.id.descricao);
         TextView voltagem = (TextView) linha.findViewById(R.id.voltagem);
         TextView potenciaUso = (TextView) linha.findViewById(R.id.potenciaUso);
@@ -54,13 +55,14 @@ public class RecursoAdaptador extends BaseAdapter {
         ImageView foto = (ImageView) linha.findViewById(R.id.imagemCelula);
 
         if(i % 2 == 0){
-            linha.setBackgroundColor(activity.getResources().getColor(R.color.colorAccent));
+            linha.setBackgroundColor(activity.getResources().getColor(R.color.colorPrimaryDark));
         }
 
-        descricao.setText(recurso.getDescricao());
-        voltagem.setText(recurso.getVoltagem().toString());
-        potenciaUso.setText(recurso.getPotenciaUso().toString());
-        potenciaStand.setText(recurso.getPotenciaStand().toString());
+        tipo.setText("Tipo:" + recurso.getTipo());
+        descricao.setText("Descrição:" + recurso.getDescricao());
+        voltagem.setText("Voltagem:" + recurso.getVoltagem().toString());
+        potenciaUso.setText("Potência em uso:" + recurso.getPotenciaUso().toString());
+        potenciaStand.setText("Potência em StandBy:" + recurso.getPotenciaStand().toString());
 
         if(recurso.getFoto() != null)
             bitmap = BitmapFactory.decodeFile(recurso.getFoto());

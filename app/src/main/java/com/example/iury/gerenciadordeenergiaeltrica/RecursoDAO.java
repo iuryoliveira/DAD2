@@ -23,7 +23,7 @@ public class RecursoDAO extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABELA + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, TIPO CHAR(1), VOLTAGEM FLOAT(9,2), POTENCIA_USO FLOAT(9,2), POTENCIA_STAND FLOAT(9,2), CAMINHO_FOTO TEXT )");
+        db.execSQL("create table " + TABELA + "(ID_RECURSO INTEGER PRIMARY KEY AUTOINCREMENT, TIPO CHAR(1), DESCRICAO VARCHAR(50), VOLTAGEM FLOAT(9,2), POTENCIA_USO FLOAT(9,2), POTENCIA_STAND FLOAT(9,2), CAMINHO_FOTO TEXT )");
     }
 
     @Override
@@ -57,10 +57,12 @@ public class RecursoDAO extends SQLiteOpenHelper{
     public Boolean inserirRecurso(Recurso recurso){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("TIPO", recurso.getDescricao());
+        contentValues.put("TIPO", recurso.getTipo().toString());
+        contentValues.put("DESCRICAO", recurso.getDescricao());
         contentValues.put("VOLTAGEM", recurso.getVoltagem());
         contentValues.put("POTENCIA_USO", recurso.getPotenciaUso());
         contentValues.put("POTENCIA_STAND", recurso.getPotenciaStand());
+        contentValues.put("CAMINHO_FOTO", recurso.getFoto());
 
         Long result = getWritableDatabase().insert(TABELA, null, contentValues );
         if(result == -1)
@@ -107,8 +109,9 @@ public class RecursoDAO extends SQLiteOpenHelper{
         while (cursor.moveToNext()){
             Recurso recurso = new Recurso();
 
-            recurso.setId(cursor.getLong(cursor.getColumnIndex("ID")));
+            recurso.setId(cursor.getLong(cursor.getColumnIndex("ID_RECURSO")));
             recurso.setDescricao(cursor.getString(cursor.getColumnIndex("TIPO")));
+            recurso.setDescricao(cursor.getString(cursor.getColumnIndex("DESCRICAO")));
             recurso.setVoltagem(cursor.getDouble(cursor.getColumnIndex("VOLTAGEM")));
             recurso.setPotenciaUso(cursor.getDouble(cursor.getColumnIndex("POTENCIA_USO")));
             recurso.setPotenciaStand(cursor.getDouble(cursor.getColumnIndex("POTENCIA_STAND")));

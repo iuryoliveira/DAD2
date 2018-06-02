@@ -1,6 +1,8 @@
 package com.example.iury.gerenciadordeenergiaeltrica;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -124,7 +126,6 @@ public class PerfilConsumo extends AppCompatActivity
 
         //dao.apagarTudo();
         List<Recurso> recursos = dao.getLista();
-        Recurso recursinho = recursos.get(0);
         dao.close();
 
         RecursoAdaptador adaptador = new RecursoAdaptador(PerfilConsumo.this, recursos);
