@@ -13,9 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
+
+import java.util.List;
 
 public class PerfilConsumo extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    ListView minhaLista;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,8 @@ public class PerfilConsumo extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        minhaLista = (ListView) findViewById(R.id.recursoLista);
     }
 
     @Override
@@ -100,5 +107,18 @@ public class PerfilConsumo extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onResume(){
+        carregaLista();
+        super.onResume();
+    }
+
+    private void carregaLista(){
+
+       /* List<Recurso>  recursos;
+        RecursoAdaptador adaptador = new RecursoAdaptador(this, recursos);
+        this.minhaLista.setAdapter(adaptador);*/
     }
 }
