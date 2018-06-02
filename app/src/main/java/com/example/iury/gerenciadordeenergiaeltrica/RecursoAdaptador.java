@@ -16,7 +16,7 @@ public class RecursoAdaptador extends BaseAdapter {
     private final List<Recurso> recursos;
     private final Activity activity;
 
-    public RecursoAdaptador(List<Recurso> recursos, Activity activity){
+    public RecursoAdaptador(Activity activity, List<Recurso> recursos){
         this.recursos = recursos;
         this.activity = activity;
     }

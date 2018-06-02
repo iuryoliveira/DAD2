@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity
     Uri imageUri;
     RecursoHelper helper;
 
-    DatabaseHelper myDb;
+    //DatabaseHelper myDb;
+    RecursoDAO recursoDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +67,8 @@ public class MainActivity extends AppCompatActivity
         setTitle("Recursos");
 
 //        Instanciando o banco de dados
-        myDb = new DatabaseHelper(getApplicationContext());
+        //myDb = new DatabaseHelper(getApplicationContext());
+        recursoDAO = new RecursoDAO(getApplicationContext());
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -259,24 +261,30 @@ public class MainActivity extends AppCompatActivity
 
         else{
 
-            Recurso novoRecurso = helper.pegaRecursoDoFormulario();
-            Toast.makeText(getApplicationContext(), helper.pegaRecursoDoFormulario().toString(), Toast.LENGTH_SHORT).show();
+            Recurso recurso = helper.pegaRecursoDoFormulario();
+            recursoDAO = new RecursoDAO(MainActivity.this);
 
-            /*Carregar recurso
-            Recurso recurso = new Recurso();
-            recurso.setDescricao("Recurso inserido pela classe");
-            recurso.setVoltagem(66.666);
-            recurso.setPotenciaUso(55.555);
-            recurso.setPotenciaStand(44.444);
+            if(recurso.getId() == null){
+                Boolean isInserted = recursoDAO.inserirRecurso(recurso);
+                if(isInserted) {
+                    Toast.makeText(getApplicationContext(), "Cadastro bem sucessido", Toast.LENGTH_SHORT).show();
+                    finish();
+                }
+                else
+                    Toast.makeText(getApplicationContext(), "Erro ao inserir", Toast.LENGTH_SHORT).show();
+            }else{
+                recursoDAO.alterarRecurso(recurso);
+            }
 
-            RecursoHelper helper = new RecursoHelper(this);
-            helper.colocaNoFormulario(recurso);*/
+            recursoDAO.close();
+            //recursoDAO.inserirRecurso(novoRecurso);
 
-            Boolean isInserted =  myDb.inserData(meuSpinner.getSelectedItem().toString(), voltagem.getText().toString());
+            /*Boolean isInserted = recursoDAO.inserirRecurso(meuSpinner.getSelectedItem().toString(), voltagem.getText().toString(), Double.parseDouble(potenciaUso.getText().toString()), Double.parseDouble(potenciaStand.getText().toString()));
+            //Boolean isInserted =  myDb.inserData(meuSpinner.getSelectedItem().toString(), voltagem.getText().toString());
             if(isInserted)
                 Toast.makeText(getApplicationContext(), "Cadastro bem sucessido", Toast.LENGTH_SHORT).show();
             else
-                Toast.makeText(getApplicationContext(), "Erro ao inserir", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Erro ao inserir", Toast.LENGTH_SHORT).show();*/
         }
     }
 

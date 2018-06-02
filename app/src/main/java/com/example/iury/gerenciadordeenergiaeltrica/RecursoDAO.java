@@ -1,9 +1,15 @@
 package com.example.iury.gerenciadordeenergiaeltrica;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecursoDAO extends SQLiteOpenHelper{
     private static final int VERSAO = 1;
@@ -33,4 +39,85 @@ public class RecursoDAO extends SQLiteOpenHelper{
             db.execSQL(sql3);
         }
     }
+
+    /*public Boolean inserirRecurso(String tipo, String voltagem, Double potencia_uso, Double potencia_stand){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("TIPO", tipo);
+        contentValues.put("VOLTAGEM", voltagem);
+        contentValues.put("POTENCIA_USO", potencia_uso);
+        contentValues.put("POTENCIA_STAND", potencia_stand);
+
+        Long result = getWritableDatabase().insert(TABELA, null, contentValues );
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }*/
+    public Boolean inserirRecurso(Recurso recurso){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("TIPO", recurso.getDescricao());
+        contentValues.put("VOLTAGEM", recurso.getVoltagem());
+        contentValues.put("POTENCIA_USO", recurso.getPotenciaUso());
+        contentValues.put("POTENCIA_STAND", recurso.getPotenciaStand());
+
+        Long result = getWritableDatabase().insert(TABELA, null, contentValues );
+        if(result == -1)
+            return false;
+        else
+            return true;
+    }
+
+    public void apagarRecurso(Recurso recurso){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] args = {recurso.getId().toString()};
+        db.delete(TABELA,"ID=?",args);
+    }
+
+    public void apagarTudo(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String[] args = {"1"};
+        db.delete(TABELA, " '1'=?",args);
+    }
+
+    public void alterarRecurso(Recurso recurso){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("VOLTAGEM", recurso.getVoltagem());
+        contentValues.put("POTENCIA_USO", recurso.getPotenciaUso());
+        contentValues.put("POTENCIA_STAND", recurso.getPotenciaStand());
+
+        String[] args = {recurso.getId().toString()};
+        getWritableDatabase().update(TABELA, contentValues, "ID=?", args);
+    }
+
+    public boolean isRecurso(String id){
+        String[] parametros = {id};
+        Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM " + TABELA + " WHERE ID=?", parametros );
+        int total = cursor.getCount();
+        return total > 0;
+    }
+
+    public List<Recurso> getLista(){
+        List<Recurso> recursos = new ArrayList<Recurso>();
+        //Cursor cursor = getReadableDatabase().rawQuery("SELECT * FROM " + TABELA + ";", null);
+        Cursor cursor = getReadableDatabase().rawQuery("select * from "+ TABELA, null);
+
+        while (cursor.moveToNext()){
+            Recurso recurso = new Recurso();
+
+            recurso.setId(cursor.getLong(cursor.getColumnIndex("ID")));
+            recurso.setDescricao(cursor.getString(cursor.getColumnIndex("TIPO")));
+            recurso.setVoltagem(cursor.getDouble(cursor.getColumnIndex("VOLTAGEM")));
+            recurso.setPotenciaUso(cursor.getDouble(cursor.getColumnIndex("POTENCIA_USO")));
+            recurso.setPotenciaStand(cursor.getDouble(cursor.getColumnIndex("POTENCIA_STAND")));
+            recurso.setFoto(cursor.getString(cursor.getColumnIndex("CAMINHO_FOTO")));
+
+            recursos.add(recurso);
+        }
+        cursor.close();
+        return recursos;
+    }
+
 }

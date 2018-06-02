@@ -47,11 +47,11 @@ public class Login extends AppCompatActivity{
 
     public void login(View view){
 
-        if(!isEmpty(login) && !isEmpty(senha)) {
+        //if(!isEmpty(login) && !isEmpty(senha)) {
             startActivity(new Intent(this, PerfilConsumo.class));
             finish();
-        }
+        /*}
         else
-            Toast.makeText(getApplicationContext(), "Informe os dados de login.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Informe os dados de login.", Toast.LENGTH_SHORT).show();*/
     }
 }

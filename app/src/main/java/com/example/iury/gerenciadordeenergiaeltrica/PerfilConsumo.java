@@ -14,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -21,6 +22,7 @@ public class PerfilConsumo extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     ListView minhaLista;
+    ListView listaDeRecursos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,8 @@ public class PerfilConsumo extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         minhaLista = (ListView) findViewById(R.id.recursoLista);
+        listaDeRecursos = (ListView) findViewById(R.id.recursoLista);
+        carregaLista();
     }
 
     @Override
@@ -116,9 +120,14 @@ public class PerfilConsumo extends AppCompatActivity
     }
 
     private void carregaLista(){
+        RecursoDAO dao = new RecursoDAO(this);
 
-       /* List<Recurso>  recursos;
-        RecursoAdaptador adaptador = new RecursoAdaptador(this, recursos);
-        this.minhaLista.setAdapter(adaptador);*/
+        //dao.apagarTudo();
+        List<Recurso> recursos = dao.getLista();
+        Recurso recursinho = recursos.get(0);
+        dao.close();
+
+        RecursoAdaptador adaptador = new RecursoAdaptador(PerfilConsumo.this, recursos);
+        this.listaDeRecursos.setAdapter(adaptador);
     }
 }

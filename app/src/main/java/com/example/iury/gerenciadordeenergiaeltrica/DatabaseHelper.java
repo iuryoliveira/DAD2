@@ -21,8 +21,8 @@ public class DatabaseHelper extends  SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, TIPO CHAR(1), VOLTAGEM FLOAT(9,2) )");
-
+        //db.execSQL("create table " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, TIPO CHAR(1), VOLTAGEM FLOAT(9,2) )");
+        db.execSQL("create table " + TABLE_NAME + "(ID INTEGER PRIMARY KEY AUTOINCREMENT, TIPO CHAR(1), VOLTAGEM FLOAT(9,2), POTENCIA_USO FLOAT(9,2), POTENCIA_STAND FLOAT(9,2), CAMINHO_FOTO TEXT )");
     }
 
     @Override
