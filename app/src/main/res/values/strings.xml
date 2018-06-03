@@ -32,4 +32,5 @@
     <string name="title_activity_simulacao">simulacao</string>
     <string name="title_activity_perfil_consumo">PerfilConsumo</string>
     <string name="title_activity_login">Login</string>
+    <string name="title_activity_cadastro_usuario">cadastro_usuario</string>
 </resources>

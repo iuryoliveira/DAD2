@@ -54,7 +54,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="73dp"
-        android:text="Cadastre-se" />
+        android:text="Cadastre-se"
+        android:onClick="redirecionarCadastro"/>
 
     <TextView
         android:id="@+id/lblLogin"

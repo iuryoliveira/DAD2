@@ -48,6 +48,10 @@
         <activity
             android:name=".Login"
             android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".cadastro_usuario"
+            android:label="@string/title_activity_cadastro_usuario"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

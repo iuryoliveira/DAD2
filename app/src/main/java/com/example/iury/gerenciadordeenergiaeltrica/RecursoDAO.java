@@ -23,7 +23,15 @@ public class RecursoDAO extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + TABELA + "(ID_RECURSO INTEGER PRIMARY KEY AUTOINCREMENT, TIPO CHAR(1), DESCRICAO VARCHAR(50), VOLTAGEM FLOAT(9,2), POTENCIA_USO FLOAT(9,2), POTENCIA_STAND FLOAT(9,2), CAMINHO_FOTO TEXT )");
+        db.execSQL("create table " + TABELA + "(ID_RECURSO INTEGER PRIMARY KEY AUTOINCREMENT," +
+                " TIPO CHAR(1)," +
+                " DESCRICAO VARCHAR(50)," +
+                " VOLTAGEM FLOAT(9,2)," +
+                " POTENCIA_USO FLOAT(9,2)," +
+                " POTENCIA_STAND FLOAT(9,2)," +
+                " CAMINHO_FOTO TEXT," +
+                " CPF_USUARIO VARCHAR(14) " +
+                ")");
     }
 
     @Override
@@ -37,6 +45,9 @@ public class RecursoDAO extends SQLiteOpenHelper{
 
             String sql3 = "ALTER TABLE " + TABELA + " ADD COLUMN CAMINHO_FOTO TEXT;";
             db.execSQL(sql3);
+
+            String sql4 = "ALTER TABLE " + TABELA + " ADD COLUMN CPF_USUARIO VARCHAR(14);";
+            db.execSQL(sql4);
         }
     }
 
@@ -63,6 +74,7 @@ public class RecursoDAO extends SQLiteOpenHelper{
         contentValues.put("POTENCIA_USO", recurso.getPotenciaUso());
         contentValues.put("POTENCIA_STAND", recurso.getPotenciaStand());
         contentValues.put("CAMINHO_FOTO", recurso.getFoto());
+        contentValues.put("CPF_USUARIO", recurso.getCpfUsuario());
 
         Long result = getWritableDatabase().insert(TABELA, null, contentValues );
         if(result == -1)

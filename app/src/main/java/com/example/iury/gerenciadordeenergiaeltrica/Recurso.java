@@ -11,6 +11,16 @@ public class Recurso implements Serializable{
     private Double potenciaStand;
     private String foto;
 
+    public String getCpfUsuario() {
+        return cpfUsuario;
+    }
+
+    public void setCpfUsuario(String cpfUsuario) {
+        this.cpfUsuario = cpfUsuario;
+    }
+
+    private String cpfUsuario;
+
     private Long id;
 
     @Override

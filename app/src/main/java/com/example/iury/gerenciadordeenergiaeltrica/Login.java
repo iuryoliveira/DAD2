@@ -54,4 +54,9 @@ public class Login extends AppCompatActivity{
         else
             Toast.makeText(getApplicationContext(), "Informe os dados de login.", Toast.LENGTH_SHORT).show();*/
     }
+
+    public void redirecionarCadastro(View view){
+        startActivity(new Intent(this, cadastro_usuario.class));
+        finish();
+    }
 }

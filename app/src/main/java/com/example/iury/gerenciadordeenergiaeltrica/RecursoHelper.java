@@ -44,6 +44,7 @@ public class RecursoHelper {
         recurso.setPotenciaUso(Double.parseDouble(potenciaUso.getText().toString()));
         recurso.setPotenciaStand(Double.parseDouble(potenciaStand.getText().toString()));
         recurso.setFoto((String) imagemRecurso.getTag());
+        recurso.setCpfUsuario("1");
         return recurso;
     }
 //    Colocar dados da classe no formulário
