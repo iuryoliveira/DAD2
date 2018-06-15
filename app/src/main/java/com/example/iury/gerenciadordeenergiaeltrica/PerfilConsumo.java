@@ -96,18 +96,21 @@ public class PerfilConsumo extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_recurso) {
+            // Trata a ação Recurso
+            Intent recursoIntent = new Intent(this, MainActivity.class);
+            startActivity(recursoIntent);
+            finish();
+        } else if (id == R.id.nav_consumo) {
+//            AlertDialog meuAlerta = construtorAlerta.create();
+//            meuAlerta.show();
+            Intent consumoIntent = new Intent(this, Consumo.class);
+            startActivity(consumoIntent);
+            finish();
+        } else if(id == R.id.nav_historico){
+            Intent consumoIntent = new Intent(this, simulacao.class);
+            startActivity(consumoIntent);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
